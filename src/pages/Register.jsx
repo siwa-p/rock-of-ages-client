@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
 
 export const Register = () => {
@@ -19,7 +19,7 @@ export const Register = () => {
                 password,
                 first_name: firstName,
                 last_name: lastName
-             }),
+            }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -89,6 +89,11 @@ export const Register = () => {
                     </fieldset>
                 </form>
             </section>
+            <div className="loginLinks">
+                <section className="link--register">
+                    <Link className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" to="/login">Already have an account?</Link>
+                </section>
+            </div>
         </main>
     )
 }

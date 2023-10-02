@@ -15,6 +15,10 @@ export const ApplicationViews = () => {
         type: {
             id: 1,
             label: "Volcanic"
+        },
+        user: {
+            first_name: "Prometheus",
+            last_name: "Vesuvius"
         }
     }])
 
