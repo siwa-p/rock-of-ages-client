@@ -9,7 +9,7 @@ This project was created with a tool named Vite. The React code is exactly like 
 3. Run `npm install`
 4. Run `npm run dev`
 
-You should output in your terminal like this.
+You should see output in your terminal like this.
 
 ```txt
 VITE v4.4.9  ready in 3531 ms

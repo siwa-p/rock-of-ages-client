@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const RockForm = ({ fetchRocks }) => {
     const initialRockState = {
         name: "",
         weight: 0,
-        type: 0
+        typeId: 0
     }
 
     const [types, changeTypes] = useState([{ id: 1, label: "Igneous" }, { id: 2, label: "Volcanic" }])
     const [rock, updateRockProps] = useState(initialRockState)
+    const navigate = useNavigate()
 
     const fetchTypes = async () => {
         const response = await fetch("http://localhost:8000/types", {
@@ -37,7 +39,9 @@ export const RockForm = ({ fetchRocks }) => {
             body: JSON.stringify(rock)
         })
 
-        fetchRocks()
+        await fetchRocks()
+
+        navigate("/allrocks")
     }
 
     return (
@@ -60,24 +64,25 @@ export const RockForm = ({ fetchRocks }) => {
                         <input id="weight" type="number"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.name = e.target.value
+                                copy.weight = e.target.value
                                 updateRockProps(copy)
                             }}
-                            value={rock.name} className="form-control" />
+                            value={rock.weight} className="form-control" />
                     </fieldset>
                     <fieldset className="mt-4">
                         <label htmlFor="type"> Type </label>
                         <br />
-                        <select id="type" className="form-control">
+                        <select id="type" className="form-control"
+                            onChange={e => {
+                                const copy = { ...rock }
+                                copy.typeId = parseInt(e.target.value)
+                                updateRockProps(copy)
+                            }}>
                             <option value={0}>- Select a type -</option>
                             {
-                                types.map(t => <option key={`type-${t.id}`} value={t.id}
-                                    onChange={e => {
-                                        const copy = { ...rock }
-                                        copy.type = parseInt(e.target.value)
-                                        updateRockProps(copy)
-                                    }} >{t.label}</option>
-                                )
+                                types.map(t => <option
+                                    key={`type-${t.id}`}
+                                    value={t.id}>{t.label}</option> )
                             }
                         </select>
                     </fieldset>
