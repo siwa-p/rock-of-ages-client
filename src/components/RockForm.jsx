@@ -13,7 +13,7 @@ export const RockForm = ({ fetchRocks }) => {
     const navigate = useNavigate()
 
     const fetchTypes = async () => {
-        const response = await fetch("http://localhost:8000/types", {
+        const response = await fetch("http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/types", {
             headers: {
                 "Authorization": `Token ${JSON.parse(localStorage.getItem("rock_token")).token}`
             }
@@ -30,7 +30,7 @@ export const RockForm = ({ fetchRocks }) => {
     const collectRock = async (evt) => {
         evt.preventDefault()
 
-        await fetch("http://localhost:8000/rocks", {
+        await fetch("http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/rocks", {
             method: "POST",
             headers: {
                 "Authorization": `Token ${JSON.parse(localStorage.getItem("rock_token")).token}`,

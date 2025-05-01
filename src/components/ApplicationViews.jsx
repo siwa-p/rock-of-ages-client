@@ -23,10 +23,10 @@ export const ApplicationViews = () => {
     }])
 
     const fetchRocksFromAPI = async (showAll) => {
-        let url = "http://localhost:8000/rocks"
+        let url = "http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/rocks"
 
         if (showAll !== true) {
-            url = "http://localhost:8000/rocks?owner=current"
+            url = "http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/rocks?owner=current"
         }
         const response = await fetch(url,
             {

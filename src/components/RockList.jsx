@@ -18,7 +18,7 @@ export const RockList = ({ rocks, fetchRocks, showAll }) => {
                         : <div>
                         <button
                             onClick={async ()=> {
-                                const response = await fetch(`http://localhost:8000/rocks/${rock.id}`, {
+                                const response = await fetch(`http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/rocks/${rock.id}`, {
                                     method: "DELETE",
                                     headers: {
                                         Authorization: `Token ${JSON.parse(localStorage.getItem("rock_token")).token}`

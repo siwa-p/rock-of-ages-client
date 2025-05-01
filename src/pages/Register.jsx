@@ -12,7 +12,7 @@ export const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:8000/register`, {
+        fetch(`http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/register`, {
             method: "POST",
             body: JSON.stringify({
                 email,
