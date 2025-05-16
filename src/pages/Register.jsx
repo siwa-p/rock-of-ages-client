@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import "./Login.css"
 
 export const Register = () => {
+  const apiUrl = import.meta.env.VITE_API_URL
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [firstName, setFirstName] = useState("")
@@ -12,7 +13,7 @@ export const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault()
-    fetch(`http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/register`, {
+    fetch(`${apiUrl}/register`, {
       method: "POST",
       body: JSON.stringify({
         email,

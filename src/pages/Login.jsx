@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import "./Login.css"
 
 export const Login = () => {
+  const apiUrl = import.meta.env.VITE_API_URL
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const existDialog = useRef()
@@ -10,7 +11,7 @@ export const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    fetch(`http://ec2-3-22-217-129.us-east-2.compute.amazonaws.com/login`, {
+    fetch(`${apiUrl}/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
